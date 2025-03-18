@@ -6,6 +6,7 @@ using ExitGames.Client.Photon;
 using System.Collections.Generic;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 /// <summary>
@@ -489,7 +490,7 @@ public class GameBoardController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (PhotonNetwork.IsConnected)
             PhotonNetwork.Disconnect();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     #endregion
@@ -629,6 +630,7 @@ public class GameBoardController : MonoBehaviourPunCallbacks, IOnEventCallback
     public override void OnLeftRoom()
     {
         Debug.Log("Left the game room");
+        LoadMainMenu();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
